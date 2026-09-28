@@ -1,0 +1,16 @@
+[Unit]
+Description=Validated online backup of scratch-card SQLite
+
+[Service]
+Type=oneshot
+User=deploy
+WorkingDirectory=/opt/scratch-card/current
+EnvironmentFile=/etc/scratch-card/app.env
+ExecStart=/opt/scratch-card/runtime/bin/node /opt/scratch-card/current/scripts/backup.ts
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+# SQLite may need to open/create WAL shared-memory files alongside the live DB.
+ReadWritePaths=/var/lib/scratch-card /var/backups/scratch-card

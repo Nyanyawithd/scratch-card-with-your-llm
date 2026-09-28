@@ -1,0 +1,38 @@
+{
+  "name": "scratch-card-with-your-llm",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "node --watch --env-file=.env server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "start": "node --env-file=.env server/index.ts",
+    "test": "node --test tests/*.test.ts",
+    "preview": "node scripts/preview.ts",
+    "setup": "node scripts/setup.mjs",
+    "backup": "node --env-file=.env scripts/backup.ts",
+    "restore": "node scripts/restore.ts",
+    "release": "npm run build && node scripts/release.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.1",
+    "express": "5.2.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.6",
+    "@types/node": "26.6.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "prettier": "3.9.9",
+    "typescript": "7.0.2",
+    "vite": "8.3.1"
+  }
+}

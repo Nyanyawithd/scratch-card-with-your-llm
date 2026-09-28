@@ -1,0 +1,22 @@
+[Unit]
+Description=Private scratch cards for human and AI
+After=network.target
+
+[Service]
+Type=simple
+User=deploy
+WorkingDirectory=/opt/scratch-card/current
+EnvironmentFile=/etc/scratch-card/app.env
+ExecStart=/opt/scratch-card/runtime/bin/node /opt/scratch-card/current/server/index.ts
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/scratch-card
+
+[Install]
+WantedBy=multi-user.target
